@@ -3,7 +3,6 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Raven from 'raven-js';
 
 import Root from './Root';
 import './index.css';
@@ -53,9 +52,6 @@ window.generateUUID = () => {
 
 // configure sentry
 if (process.env.NODE_ENV !== 'development') {
-    Raven.config('https://4e4d1ac0c746404c90f4b0248a554a39@sentry.io/237417', {
-        release: process.env.REACT_APP_VERSION,
-    }).install();
 } else {
     console.debug('Sentry not initialised, in development mode');
 }

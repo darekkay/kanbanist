@@ -1,5 +1,4 @@
 import { Map, Set, List as ImmutableList } from 'immutable';
-import Raven from 'raven-js';
 import Todoist from '../../todoist-client/Todoist';
 
 import List from '../../core/List';
@@ -103,7 +102,6 @@ export const actions = {
                 dispatch(actions.fetchSuccess(labels, items, projects, collaborators));
             })
             .catch(err => {
-                Raven.captureException(err);
                 console.error('Could not fetch Todoist tasks: ', err);
                 dispatch(actions.fetchFailure(err.message || 'Could not fetch Todoist tasks'));
             });
